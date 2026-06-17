@@ -1,86 +1,116 @@
-<div align="center">
-  <h1>🛡️ AEGIS Intelligence v5.0</h1>
-  <p><em>Advanced Biometric & Security Platform</em></p>
-  
-  [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org)
-  [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-orange.svg)](https://github.com/ultralytics/ultralytics)
-  [![OpenCV](https://img.shields.io/badge/OpenCV-Computer_Vision-green.svg)](https://opencv.org/)
-  [![CustomTkinter](https://img.shields.io/badge/UI-CustomTkinter-blueviolet.svg)](https://github.com/TomSchimansky/CustomTkinter)
-</div>
+# 🛡️ AEGIS Intelligence v5.0
 
-<hr />
+**Advanced Biometric & Neural Security Platform**
 
-## 📖 Overview
+AEGIS Intelligence is a high-performance computer vision suite designed for real-time security monitoring, behavioral analysis, and automated threat detection. Leveraging custom-trained **YOLOv8** models, it provides a dual-interface command center for comprehensive environmental awareness.
 
-**AEGIS Intelligence** is a state-of-the-art computer vision and security analysis platform built for real-time monitoring and threat detection. Leveraging the power of the **YOLOv8** object detection architecture, AEGIS provides immediate insights into environments by detecting anomalous behaviors, such as indoor smoking, alongside performing basic biometric assessments. 
+---
 
-Designed with a sleek, futuristic interface using `customtkinter`, AEGIS acts as an intelligent surveillance dashboard suited for modern security command centers.
+## 🚀 Vision & Overview
+
+In modern high-security environments, passive monitoring is no longer sufficient. **AEGIS Intelligence** transforms standard video feeds into proactive intelligence streams. It doesn't just "record"; it **understands**.
+
+- **Detects** prohibited behaviors (e.g., indoor smoking) with sub-second latency.
+- **Analyzes** biometric markers and subject metrics in real-time.
+- **Alerts** security personnel through automated snapshots and neural notifications.
+- **Archives** every significant event into an auditable, encrypted database.
+
+---
 
 ## ✨ Key Features
 
-- **Real-Time Behavior Analysis**: Instantaneously detects prohibited activities (e.g., smoking) using a custom-trained YOLOv8 neural network.
-- **Biometric Estimation**: Tracks motion states and estimates subject metrics such as average height in real-time.
-- **Automated Event Logging**: Contextual events and critical alerts are logged to an embedded SQLite database, creating a permanent, auditable unified archive.
-- **Critical Alert Pipeline**: Automatic snapshot capture and neural notification dispatch upon sustained threat detection.
-- **Dark-Themed Command Center UI**: Built entirely in Python, the interface features a responsive layout, live intelligence feeds, status diagnostics, and a dedicated incident archive viewer.
+### 🧠 Neural Engine
+*   **Behavioral Detection**: Specialized YOLOv8 integration for detecting smoking and other anomalous activities.
+*   **Biometric Estimation**: Real-time height estimation and motion state tracking for all detected subjects.
+*   **Contextual Intelligence**: Analyzes the relationship between subjects and objects (e.g., mouth-zone tracking for smoking confirmation).
+
+### 🖥️ Dual-Interface Command Center
+*   **Desktop Dashboard**: A futuristic, glassmorphism-inspired UI built with `customtkinter` for local security stations.
+*   **Web Dashboard**: A remote Flask-powered command center for browser-based monitoring from any device on the network.
+
+### 📊 Security Pipeline
+*   **Automated Event Logging**: Every detection is timestamped and stored in a local SQLite database.
+*   **Incident Archives**: Built-in viewer for historical snapshots and alert logs.
+*   **Live Diagnostics**: Real-time health monitoring of the AI inference pipeline.
+
+---
 
 ## 🛠️ Technology Stack
 
-- **Core Engine**: Python 3
-- **Computer Vision**: OpenCV (`cv2`), Ultralytics YOLOv8
-- **User Interface**: CustomTkinter (`customtkinter`), Pillow (`PIL`)
-- **Database**: SQLite3
-- **Concurrency**: Threading for non-blocking UI and background ML inference
+| Component | Technology |
+| :--- | :--- |
+| **Language** | Python 3.9+ |
+| **AI / Computer Vision** | OpenCV, Ultralytics YOLOv8 |
+| **Desktop UI** | CustomTkinter, Pillow |
+| **Web Interface** | Flask, HTML5, CSS3 |
+| **Database** | SQLite3 |
+| **Concurrency** | Multithreading (Inference/UI Separation) |
 
-## 🚀 Getting Started
+---
 
-### Prerequisites
+## 📦 Installation
 
-Ensure you have Python 3.8+ installed on your system.
+### 1. Prerequisites
+Ensure you have **Python 3.8+** and a working webcam.
 
-### Installation
+### 2. Setup Environment
+```bash
+# Clone the repository
+git clone https://github.com/abidali72/-AEGIS-Intelligence-v5.0.git
+cd AEGIS-Intelligence
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/abidali72/AEGIS-Intelligence.git
-   cd AEGIS-Intelligence
-   ```
+# Create and activate virtual environment
+python -m venv .venv
+# Windows:
+.venv\Scripts\activate
+# Linux/macOS:
+source .venv/bin/activate
+```
 
-2. **Create a virtual environment (Recommended):**
-   ```bash
-   python -m venv .venv
-   # On Windows:
-   .venv\Scripts\activate
-   # On macOS/Linux:
-   source .venv/bin/activate
-   ```
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+# Or manually:
+pip install opencv-python customtkinter ultralytics Pillow flask
+```
 
-3. **Install the dependencies:**
-   ```bash
-   pip install opencv-python customtkinter ultralytics Pillow
-   ```
+### 4. Neural Weights
+Place your `yolov8n.pt` (or custom model) in the root directory.
 
-4. **Add YOLOv8 Weights:**
-   Ensure your model file (e.g., `yolov8n.pt` or your custom `.pt` file) is present in the project root directory.
+---
 
-### Running the Application
+## 🏃 Running AEGIS
 
-Execute the main entry point to boot the analytics pipeline:
-
+### 🖥️ Option A: Desktop Command Center
+Launch the primary GUI interface for local monitoring:
 ```bash
 python app.py
 ```
 
-## 🖥️ System Architecture
+### 🌐 Option B: Web Dashboard
+Launch the web-based remote interface (Default: `http://127.0.0.1:5000`):
+```bash
+python web_app.py
+```
 
-- **`app.py`**: The main GUI application and entry point.
-- **`detector.py`**: The neural engine wrapping YOLOv8 for inference and bounding box rendering.
-- **`database.py`**: SQLite database handler for robust event logging.
-- **`notifier.py`**: Background service for dispatching alerts.
-- **`web_app.py`**: Secondary web-based interface pipeline.
+---
 
-## 🤝 Contributing
-Contributions, issues, and feature requests are welcome!
+## 📂 Project Architecture
 
-## 📄 License
-This project is currently marked as an educational and research prototype (University Project v5.0).
+*   `app.py`: Main entry point for the Desktop GUI application.
+*   `web_app.py`: Flask application for the remote web dashboard.
+*   `detector.py`: Core AI wrapper for YOLOv8 and computer vision logic.
+*   `database.py`: Handles all SQLite operations and event persistence.
+*   `notifier.py`: Background service for managing security alerts.
+*   `captures/`: Directory where incident snapshots are stored.
+
+---
+
+## 📄 License & Credits
+**AEGIS Intelligence** is developed as a high-end security research prototype (University Project v5.0).
+
+---
+
+<div align="center">
+  <p><i>Empowering Security through Artificial Intelligence</i></p>
+</div>
