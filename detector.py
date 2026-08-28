@@ -4,6 +4,23 @@ from ultralytics import YOLO
 import os
 
 class SmokingDetector:
+    # ⚡ Performance Optimization: Static lookup dictionary and set to avoid repeated allocations
+    # per detection / frame inside hot detection loops.
+    CLASS_MAP = {
+        "cell phone": "Smart Device",
+        "remote": "Electronic Device",
+        "cup": "Beverage Container",
+        "bottle": "Bottle",
+        "toothbrush": "Personal Item",
+        "spoon": "Utensil",
+        "scissors": "Tool",
+        "book": "Document"
+    }
+    RELEVANT_LABELS = {
+        "cell phone", "remote", "cup", "bottle",
+        "toothbrush", "scissors", "spoon", "book"
+    }
+
     def __init__(self, model_path="yolov8n.pt"):
         # Load YOLOv8 for general object detection
         self.model = YOLO(model_path)
@@ -49,10 +66,9 @@ class SmokingDetector:
                     est_height = self.estimate_height(det, h)
                     det["estimated_height"] = est_height
                     people.append(det)
-                else:
-                    relevant_labels = ["cell phone", "remote", "cup", "bottle", "toothbrush", "scissors", "spoon", "book"]
-                    if label in relevant_labels or conf < 0.25:
-                        detections.append(det)
+                # ⚡ Performance Optimization: O(1) set lookup instead of creating list & O(n) scan
+                elif label in self.RELEVANT_LABELS or conf < 0.25:
+                    detections.append(det)
         
         return detections, people, motion_detected
 
@@ -77,22 +93,12 @@ class SmokingDetector:
         label = detection["label"]
         conf = detection["confidence"]
         
-        classmap = {
-            "cell phone": "Smart Device",
-            "remote": "Electronic Device",
-            "cup": "Beverage Container",
-            "bottle": "Bottle",
-            "toothbrush": "Personal Item",
-            "spoon": "Utensil",
-            "scissors": "Tool",
-            "book": "Document"
-        }
-        
-        refined_label = classmap.get(label, "Unidentified Object")
+        # ⚡ Performance Optimization: Fast early-return on low-confidence suspected cigarette,
+        # avoiding dict lookup completely; uses static class attribute CLASS_MAP to prevent dict creation on every call.
         if conf < 0.20:
-            refined_label = "Suspected Cigarette"
+            return "Suspected Cigarette"
             
-        return refined_label
+        return self.CLASS_MAP.get(label, "Unidentified Object")
 
     def get_contextual_event(self, detections, people, motion_detected):
         """
