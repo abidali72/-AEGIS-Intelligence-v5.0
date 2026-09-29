@@ -1,5 +1,41 @@
 # 🛡️ AEGIS Intelligence v5.0
 
+<p align="center">
+  <a href="https://github.com/abidali72/-AEGIS-Intelligence-v5.0/actions/workflows/ci.yml">
+    <img src="https://github.com/abidali72/-AEGIS-Intelligence-v5.0/actions/workflows/ci.yml/badge.svg" alt="CI Build Status">
+  </a>
+  <a href="https://www.python.org/">
+    <img src="https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-3776AB?style=flat&logo=python&logoColor=white" alt="Python Version">
+  </a>
+  <a href="https://pytorch.org/">
+    <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white" alt="PyTorch">
+  </a>
+  <a href="https://opencv.org/">
+    <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white" alt="OpenCV">
+  </a>
+  <a href="https://github.com/ultralytics/ultralytics">
+    <img src="https://img.shields.io/badge/YOLOv8-Ultralytics-FF6F00?style=flat&logo=ultralytics&logoColor=white" alt="YOLOv8">
+  </a>
+  <a href="https://flask.palletsprojects.com/">
+    <img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" alt="Flask">
+  </a>
+  <a href="https://sqlite.org/">
+    <img src="https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white" alt="SQLite">
+  </a>
+  <a href="https://github.com/psf/black">
+    <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style: Black">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+  </a>
+  <a href="https://github.com/abidali72/-AEGIS-Intelligence-v5.0/stargazers">
+    <img src="https://img.shields.io/github/stars/abidali72/-AEGIS-Intelligence-v5.0?style=social" alt="GitHub Stars">
+  </a>
+  <a href="https://github.com/abidali72/-AEGIS-Intelligence-v5.0/network/members">
+    <img src="https://img.shields.io/github/forks/abidali72/-AEGIS-Intelligence-v5.0?style=social" alt="GitHub Forks">
+  </a>
+</p>
+
 **Advanced Biometric & Neural Security Platform**
 
 AEGIS Intelligence is a high-performance computer vision suite designed for real-time security monitoring, behavioral analysis, and automated threat detection. Leveraging custom-trained **YOLOv8** models, it provides a dual-interface command center for comprehensive environmental awareness.
@@ -40,7 +76,7 @@ In modern high-security environments, passive monitoring is no longer sufficient
 | Component | Technology |
 | :--- | :--- |
 | **Language** | Python 3.9+ |
-| **AI / Computer Vision** | OpenCV, Ultralytics YOLOv8 |
+| **AI / Computer Vision** | OpenCV, PyTorch, Ultralytics YOLOv8 |
 | **Desktop UI** | CustomTkinter, Pillow |
 | **Web Interface** | Flask, HTML5, CSS3 |
 | **Database** | SQLite3 |
@@ -48,16 +84,16 @@ In modern high-security environments, passive monitoring is no longer sufficient
 
 ---
 
-## 📦 Installation
+## 📦 Installation & Setup
 
 ### 1. Prerequisites
-Ensure you have **Python 3.8+** and a working webcam.
+Ensure you have **Python 3.9+** and a working webcam or RTSP video feed.
 
 ### 2. Setup Environment
 ```bash
 # Clone the repository
 git clone https://github.com/abidali72/-AEGIS-Intelligence-v5.0.git
-cd AEGIS-Intelligence
+cd -AEGIS-Intelligence-v5.0
 
 # Create and activate virtual environment
 python -m venv .venv
@@ -70,12 +106,19 @@ source .venv/bin/activate
 ### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
-# Or manually:
-pip install opencv-python customtkinter ultralytics Pillow flask
 ```
 
 ### 4. Neural Weights
 Place your `yolov8n.pt` (or custom model) in the root directory.
+
+---
+
+## 🧪 Testing & Verification
+
+Run the automated test suite to verify system integrity:
+```bash
+python -m unittest discover -s tests
+```
 
 ---
 
@@ -102,12 +145,14 @@ python web_app.py
 *   `detector.py`: Core AI wrapper for YOLOv8 and computer vision logic.
 *   `database.py`: Handles all SQLite operations and event persistence.
 *   `notifier.py`: Background service for managing security alerts.
-*   `captures/`: Directory where incident snapshots are stored.
+*   `tests/`: Comprehensive unit test suite.
+*   `.github/`: CI workflows and issue/PR templates.
+*   `captures/` / `archives/`: Directories where incident snapshots are stored.
 
 ---
 
 ## 📄 License & Credits
-**AEGIS Intelligence** is developed as a high-end security research prototype (University Project v5.0).
+**AEGIS Intelligence** is developed under the MIT License.
 
 ---
 
