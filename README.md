@@ -1,5 +1,11 @@
 # 🛡️ AEGIS Intelligence v5.0
 
+[![CI Build](https://github.com/abidali72/-AEGIS-Intelligence-v5.0/actions/workflows/ci.yml/badge.svg)](https://github.com/abidali72/-AEGIS-Intelligence-v5.0/actions/workflows/ci.yml)
+[![Python Version](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![AI Framework](https://img.shields.io/badge/YOLOv8-Ultralytics-FF6F00)](https://github.com/ultralytics/ultralytics)
+[![UI Framework](https://img.shields.io/badge/GUI-CustomTkinter%20%7C%20Flask-000000)](https://github.com/TomSchimansky/CustomTkinter)
+
 **Advanced Biometric & Neural Security Platform**
 
 AEGIS Intelligence is a high-performance computer vision suite designed for real-time security monitoring, behavioral analysis, and automated threat detection. Leveraging custom-trained **YOLOv8** models, it provides a dual-interface command center for comprehensive environmental awareness.
@@ -48,16 +54,16 @@ In modern high-security environments, passive monitoring is no longer sufficient
 
 ---
 
-## 📦 Installation
+## 📦 Installation & Setup
 
 ### 1. Prerequisites
-Ensure you have **Python 3.8+** and a working webcam.
+Ensure you have **Python 3.9+** and a working webcam or RTSP video feed.
 
 ### 2. Setup Environment
 ```bash
 # Clone the repository
 git clone https://github.com/abidali72/-AEGIS-Intelligence-v5.0.git
-cd AEGIS-Intelligence
+cd -AEGIS-Intelligence-v5.0
 
 # Create and activate virtual environment
 python -m venv .venv
@@ -70,12 +76,19 @@ source .venv/bin/activate
 ### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
-# Or manually:
-pip install opencv-python customtkinter ultralytics Pillow flask
 ```
 
 ### 4. Neural Weights
 Place your `yolov8n.pt` (or custom model) in the root directory.
+
+---
+
+## 🧪 Testing & Verification
+
+Run the automated test suite to verify system integrity:
+```bash
+python -m unittest discover -s tests
+```
 
 ---
 
@@ -102,12 +115,14 @@ python web_app.py
 *   `detector.py`: Core AI wrapper for YOLOv8 and computer vision logic.
 *   `database.py`: Handles all SQLite operations and event persistence.
 *   `notifier.py`: Background service for managing security alerts.
-*   `captures/`: Directory where incident snapshots are stored.
+*   `tests/`: Comprehensive unit test suite.
+*   `.github/`: CI workflows and issue/PR templates.
+*   `captures/` / `archives/`: Directories where incident snapshots are stored.
 
 ---
 
 ## 📄 License & Credits
-**AEGIS Intelligence** is developed as a high-end security research prototype (University Project v5.0).
+**AEGIS Intelligence** is developed under the MIT License.
 
 ---
 
